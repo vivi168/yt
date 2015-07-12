@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import re
 from subprocess import call
 from bs4 import BeautifulSoup
 import urllib.parse
@@ -10,11 +11,14 @@ def getLinks(url):
     webpage = urllib.request.urlopen(url)
     soup = BeautifulSoup(webpage, "html.parser")
     links = [];
-    for anchor in soup.find_all('a', { "class": "yt-uix-tile-link" } ):
-        link = [];
-        link.append(anchor.get('title'))
-        link.append("http://www.youtube.com" + anchor.get('href'))
-        links.append(link)
+    #for anchor in soup.find_all('a', { "class": "yt-uix-tile-link" } ):
+    for anchor in soup.find_all('a', href=re.compile('.*watch\?v=.{11}')):
+        #print(anchor)
+        if anchor.get('title'):
+            link = [];
+            link.append(anchor.get('title'))
+            link.append("http://www.youtube.com" + anchor.get('href'))
+            links.append(link)
         #print(link)
 
     for i, link in enumerate(links):

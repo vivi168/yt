@@ -11,4 +11,4 @@ You can get a list of the latest videos from a channel:
 
 # TODO
 
-Look for links with a regex on href instead of looking for the 'a' css class (which might change without notice)
+curses interface
