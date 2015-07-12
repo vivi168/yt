@@ -1,4 +1,5 @@
-Browser youtube video and download them from command line.
+Browse youtube video and download them directly from the command line.
+You need BeautifulSoup 4 and youtube-dl
 
 You can do a global youtube search:
   ./yt -s "your query string"
